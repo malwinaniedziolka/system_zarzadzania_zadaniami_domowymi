@@ -1,0 +1,28 @@
+{
+	"name": "system_zarzadzania_zadaniami_domowymi",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/malwinaniedziolka/system_zarzadzania_zadaniami_domowymi.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/malwinaniedziolka/system_zarzadzania_zadaniami_domowymi/issues"
+	},
+	"homepage": "https://github.com/malwinaniedziolka/system_zarzadzania_zadaniami_domowymi#readme",
+	"dependencies": {
+		"body-parser": "^2.2.0",
+		"ejs": "^3.1.10",
+		"express": "^5.1.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.10"
+	}
+}
