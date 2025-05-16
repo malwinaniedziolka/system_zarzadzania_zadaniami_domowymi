@@ -5,7 +5,26 @@
   </head>
   <body>
     <main>
-      <h1 class="heading">Home</h1>
+      <nav>
+        <ul>
+          <li><a href="/add">Add Task</a></li>
+        </ul>
+      </nav>
+      <h1 class="heading">Home - My Tasks</h1>
+      <% if (tasks?.length > 0) { %>
+      <ul>
+        <% tasks.forEach(task => { %>
+        <li>
+          <h3 class="card__title"><%= task.name %></h3>
+          <p class="card__description"><%= task.description %></p>
+          <p class="card__price"><%= task.deadline %></p>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <br />
+      <div>No tasks yet.</div>
+      <% }%>
     </main>
   </body>
 </html>

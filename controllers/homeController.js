@@ -1,10 +1,14 @@
-//const cartController = require("./cartController");
-//tu jakis inny kontroler potrzebny nwm
+const Tasks = require("../models/TasksModel");
 
-exports.getHomeView = (request, response) => {
+const { STATUS_CODE } = require("../constants/statusCode");
+
+exports.getTasksView = (request, response) => {
+  const tasks = Tasks.getAll();
+
   response.render("home.ejs", {
     headTitle: "Home - Tasks",
-    //path: "/",
-    //activeLinkPath: "/",
+    path: "/",
+    activeLinkPath: "/",
+    tasks,
   });
 };

@@ -1,0 +1,14 @@
+const express = require("express");
+
+const homeController = require("../controllers/homeController");
+const tasksController = require("../controllers/tasksController");
+
+const router = express.Router();
+
+router.get("/", homeController.getTasksView);
+router.get("/add", tasksController.getAddTaskView);
+router.post("/add", tasksController.addNewTask);
+//router.get("/:name", productsController.getProductView);
+//router.delete("/:name", productsController.deleteProduct);
+
+module.exports = router;
