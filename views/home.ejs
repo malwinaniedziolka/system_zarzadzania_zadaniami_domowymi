@@ -5,20 +5,22 @@
   </head>
   <body>
     <main>
-      <nav>
-        <ul>
-          <li><a href="/add">Add Task</a></li>
+      <h1 class="heading">Home - My Tasks</h1>
+      <nav class="navigation">
+        <ul class="navigation_list">
+          <li><a href="/add" class="add_task">Add Task</a></li>
         </ul>
       </nav>
-      <h1 class="heading">Home - My Tasks</h1>
       <% if (tasks?.length > 0) { %>
       <ul>
         <% tasks.forEach(task => { %>
-        <li>
-          <h3 class="card__title"><%= task.name %></h3>
-          <p class="card__description"><%= task.description %></p>
-          <p class="card__price"><%= task.deadline %></p>
-        </li>
+            <li class="task_list">
+              <div class="task_header">
+                <h3 class="task_title"><%= task.name %></h3>
+                <p class="task_description"> - <%= task.description %></p>
+              </div>
+              <p class="task_deadline">Deadline: <%= task.deadline %></p>
+            </li>
         <% }) %>
       </ul>
       <% } else { %>
