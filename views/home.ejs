@@ -2,6 +2,23 @@
   <head>
     <title><%= headTitle %></title>
     <link rel="stylesheet" href="/css/main.css" />
+    <script>
+      function deleteTask(id) {
+        if (!confirm(`Are you sure you want to delete this task?`)) {
+          return;
+        }
+
+      fetch(`/delete/${id}`, {
+        method: "DELETE"
+        }).then((res) => {
+          if (res.ok) {
+            window.location.reload();
+          } else {
+          alert("Error while deleting.");
+          }
+        });
+      }
+    </script>
   </head>
   <body>
     <main>
@@ -14,12 +31,21 @@
       <% if (tasks?.length > 0) { %>
       <ul>
         <% tasks.forEach(task => { %>
-            <li class="task_list">
+            <li class="task_list <%= task.done ? 'task_done' : '' %>">
               <div class="task_header">
                 <h3 class="task_title"><%= task.name %></h3>
                 <p class="task_description"> - <%= task.description %></p>
+                <p class="task_deadline">Deadline: <%= task.deadline %></p>
               </div>
-              <p class="task_deadline">Deadline: <%= task.deadline %></p>
+              <div class="task_buttons">
+                <form action="/done" method="POST">
+                  <input type="hidden" name="name" value="<%= task.name %>">
+                  <button class="done_button" type="submit" <%= task.done ? "disabled" : "" %>>Done</button>
+                </form>
+                <form>
+                  <button class="done_button" type="button" onclick="deleteTask('<%= task.id %>')">Delete</button>
+              </form>
+              </div>
             </li>
         <% }) %>
       </ul>

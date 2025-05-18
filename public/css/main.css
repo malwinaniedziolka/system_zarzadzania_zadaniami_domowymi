@@ -87,14 +87,28 @@ main {
   width: 100%;
 }
 
-.button:hover {
-  background-color: #1b1b1b;
-  transform: translateY(-2px);
+.task_buttons {
+  display: flex;
+  gap:10px;
 }
 
-.button:active {
-  background-color: #1a1a1a;
-  transform: translateY(0);
+.done_button{
+  padding: 0.8rem 1.5rem;
+  background-color: #7c3f65;
+  color: white;
+  border: #2e1525;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.done_button:hover {
+  background-color: #3c1d31;
+}
+
+.done_button:active {
+  background-color: #3c1d31;
 }
 
 .form {
@@ -146,7 +160,10 @@ main {
   margin: 0;
   margin-bottom: 1rem;
   margin-left: -40px;
-  max-width: 1500px;
+  max-width: 200rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
 }
 
+.task_done{
+  background-color: rgb(136, 224, 143);
+}
