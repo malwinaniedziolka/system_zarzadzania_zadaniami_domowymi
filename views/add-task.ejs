@@ -6,6 +6,8 @@
   <body>
     <main>
       <h1 class="heading">Add Task</h1>
+      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
+      activeLinkPath}); %>
       <form class="form" action="/add" method="POST">
         <div class="form__group">
           <label class="form__label" for="name"> Name: </label>
@@ -24,7 +26,7 @@
           <label class="form__label" for="deadline"> Deadline: </label>
           <input id="deadline" class="form__input" type="date" name="deadline" />
         </div>
-        <button class="button" type="submit">Add Task</button>
+        <button class="add_task_button" type="submit">Add Task</button>
       </form>
     </main>
   </body>

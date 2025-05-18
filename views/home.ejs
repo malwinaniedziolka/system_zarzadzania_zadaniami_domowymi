@@ -28,7 +28,7 @@
       <% if (tasks?.length > 0) { %>
       <ul>
         <% tasks.forEach(task => { %>
-            <li class="task_list <%= task.done ? 'task_done' : '' %>">
+            <li class="task_list <%= task.done ? 'task_done' : '' %><%= task.isLate ? 'task_late' : '' %>">
               <div class="task_header">
                 <h3 class="task_title"><%= task.name %></h3>
                 <p class="task_description"> - <%= task.description %></p>
