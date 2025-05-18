@@ -1,5 +1,6 @@
 const Tasks = require("../models/TasksModel");
 
+const { MENU_LINKS } = require("../constants/navigation");
 const { STATUS_CODE } = require("../constants/statusCode");
 
 exports.getAddTaskView = (req, res) => {
@@ -7,6 +8,7 @@ exports.getAddTaskView = (req, res) => {
     headTitle: "Add Task",
     path: "/add",
     activeLinkPath: "/add",
+    menuLinks: MENU_LINKS,
   });
 };
 

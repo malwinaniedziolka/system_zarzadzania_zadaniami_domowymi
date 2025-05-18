@@ -21,19 +21,37 @@ main {
 
 .navigation{
   background-color: #7c3f65;
-  padding: 0.1rem 0;
+  padding: 0.7rem 0;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 0.7rem;
 }
 
-.navigation_list {
+.navigation__list {
   list-style-type: none;
   margin: 5;
   margin-left: 20;
   padding: 0;
   display: flex;
-  gap: 1.5rem;
+  gap: 3rem;
+}
+
+.navigation__link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease;
+}
+
+.navigation__link:hover {
+  background-color: #3c1d31;
+}
+
+.navigation__link--active {
+  background-color: #3c1d31;
 }
 
 .add_task{
