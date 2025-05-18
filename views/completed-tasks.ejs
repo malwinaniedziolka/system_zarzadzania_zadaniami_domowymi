@@ -22,7 +22,7 @@
   </head>
   <body>
     <main>
-      <h1 class="heading">Home - All Tasks</h1>
+      <h1 class="heading">Completed Tasks</h1>
       <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
       activeLinkPath}); %>
       <% if (tasks?.length > 0) { %>
@@ -48,7 +48,7 @@
       </ul>
       <% } else { %>
       <br />
-      <div class="no_tasks">No tasks yet.</div>
+      <div class="no_tasks">No Completed tasks.</div>
       <% }%>
     </main>
   </body>

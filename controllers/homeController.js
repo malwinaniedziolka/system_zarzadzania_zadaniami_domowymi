@@ -11,6 +11,8 @@ exports.getTasksView = (request, response) => {
     task.isLate = !task.done && deadline < new Date();
   });
 
+  tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+
   response.render("home.ejs", {
     headTitle: "Home - All Tasks",
     path: "/",

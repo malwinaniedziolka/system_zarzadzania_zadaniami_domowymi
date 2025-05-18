@@ -12,7 +12,7 @@ class Tasks {
   static #tasks = [
     { id: '1', name: "Matma", description: "opisss", deadline: "2026-03-21", done: false },
     { id: '2', name: "Angielski", description: "opis zadania", deadline: "2025-09-21", done: false },
-    { id: '2', name: "Geografia", description: "zadanie 15", deadline: "2024-09-21", done: false },
+    { id: '3', name: "Geografia", description: "zadanie 15", deadline: "2024-09-21", done: false },
   ];
 
   static getAll() {
@@ -26,7 +26,21 @@ class Tasks {
   static markAsDone(name) {
     const task = this.#tasks.find((task) => task.name === name);
     if (task) task.done = true;
-}
+  }
+
+  static getAllUpcoming(){
+    const now = new Date()
+    return this.#tasks.filter(task => new Date(task.deadline) > now && task.done == false);
+  }
+
+  static getAllPastDue(){
+    const now = new Date()
+    return this.#tasks.filter(task => new Date(task.deadline) < now && task.done == false);
+  }
+
+  static getAllCompleted(){
+    return this.#tasks.filter(task => task.done == true);
+  } 
 
   static deleteById(id) {
     this.#tasks = this.#tasks.filter((task) => task.id !== id);

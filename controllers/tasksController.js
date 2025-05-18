@@ -25,6 +25,48 @@ exports.markTaskAsDone = (req, res) => {
   res.redirect("/");
 }
 
+exports.getUpcomingTasksView = (req, res) => {
+  const tasks = Tasks.getAllUpcoming();
+
+  tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+
+  res.render("upcoming-tasks.ejs", {
+    headTitle: "Upcoming Tasks",
+    path: "/upcoming",
+    activeLinkPath: "/upcoming",
+    menuLinks: MENU_LINKS,
+    tasks,
+  });
+}
+
+exports.getPastDueTasksView = (req, res) => {
+  const tasks = Tasks.getAllPastDue();
+
+  tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+
+  res.render("past-due-tasks.ejs", {
+    headTitle: "Upcoming Tasks",
+    path: "/pastdue",
+    activeLinkPath: "/pastdue",
+    menuLinks: MENU_LINKS,
+    tasks,
+  });
+}
+
+exports.getCompletedTasksView = (req, res) => {
+  const tasks = Tasks.getAllCompleted();
+
+  tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+
+  res.render("completed-tasks.ejs", {
+    headTitle: "Completed Tasks",
+    path: "/completed",
+    activeLinkPath: "/completed",
+    menuLinks: MENU_LINKS,
+    tasks,
+  });
+}
+
 exports.deleteTask = (req, res) => { //usuwa wszystkie rzeczy o tym imieniu czyli np 2 matmy
   const { id } = req.params;
   Tasks.deleteById(id);
