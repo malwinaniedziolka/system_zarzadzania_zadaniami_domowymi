@@ -25,6 +25,7 @@
       <h1 class="heading">Upcoming Tasks</h1>
       <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
       activeLinkPath}); %>
+      <%- include('partials/sorting', { path: path }); %>
       <% if (tasks?.length > 0) { %>
       <ul>
         <% tasks.forEach(task => { %>

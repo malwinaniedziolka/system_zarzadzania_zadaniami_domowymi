@@ -8,8 +8,7 @@ const logger = require("./utils/logger");
 const homeRoutes = require("./routing/home");
 const { STATUS_CODE } = require("./constants/statusCode");
 const tasksRoutes = require("./routing/tasks");
-
-//dalsze importy
+const { MENU_LINKS } = require("./constants/navigation");
 
 const app = express();
 
@@ -37,6 +36,7 @@ app.use((request, response) => {
   response.status(STATUS_CODE.NOT_FOUND).render("404", {
     headTitle: "404",
     activeLinkPath: "",
+    menuLinks: MENU_LINKS,
   });
   logger.getErrorLog(url);
 });

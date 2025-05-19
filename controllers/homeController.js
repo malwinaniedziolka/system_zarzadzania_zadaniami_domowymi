@@ -3,17 +3,24 @@ const Tasks = require("../models/TasksModel");
 const { MENU_LINKS } = require("../constants/navigation");
 const { STATUS_CODE } = require("../constants/statusCode");
 
-exports.getTasksView = (request, response) => {
+
+
+exports.getTasksView = (req, res) => {
   const tasks = Tasks.getAll();
+  const sortParam = req.query.sort;
 
   tasks.forEach(task => {
     const deadline = new Date(task.deadline);
     task.isLate = !task.done && deadline < new Date();
   });
 
-  tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  if (sortParam === 'new') {
+    tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+  } else if (sortParam === 'old') {
+    tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  }
 
-  response.render("home.ejs", {
+  res.render("home.ejs", {
     headTitle: "Home - All Tasks",
     path: "/",
     activeLinkPath: "/",

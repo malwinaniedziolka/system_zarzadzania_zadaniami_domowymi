@@ -27,8 +27,13 @@ exports.markTaskAsDone = (req, res) => {
 
 exports.getUpcomingTasksView = (req, res) => {
   const tasks = Tasks.getAllUpcoming();
+  const sortParam = req.query.sort;
 
-  tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  if (sortParam === 'new') {
+    tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+  } else if (sortParam === 'old') {
+    tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  }
 
   res.render("upcoming-tasks.ejs", {
     headTitle: "Upcoming Tasks",
@@ -41,8 +46,13 @@ exports.getUpcomingTasksView = (req, res) => {
 
 exports.getPastDueTasksView = (req, res) => {
   const tasks = Tasks.getAllPastDue();
+  const sortParam = req.query.sort;
 
-  tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  if (sortParam === 'new') {
+    tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+  } else if (sortParam === 'old') {
+    tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  }
 
   res.render("past-due-tasks.ejs", {
     headTitle: "Upcoming Tasks",
@@ -55,8 +65,13 @@ exports.getPastDueTasksView = (req, res) => {
 
 exports.getCompletedTasksView = (req, res) => {
   const tasks = Tasks.getAllCompleted();
+  const sortParam = req.query.sort;
 
-  tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+  if (sortParam === 'new') {
+    tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+  } else if (sortParam === 'old') {
+    tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  }
 
   res.render("completed-tasks.ejs", {
     headTitle: "Completed Tasks",
@@ -67,7 +82,7 @@ exports.getCompletedTasksView = (req, res) => {
   });
 }
 
-exports.deleteTask = (req, res) => { //usuwa wszystkie rzeczy o tym imieniu czyli np 2 matmy
+exports.deleteTask = (req, res) => {
   const { id } = req.params;
   Tasks.deleteById(id);
 

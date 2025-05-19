@@ -42,7 +42,7 @@ main {
   font-weight: 600;
   font-size: 1.1rem;
   padding: 0.7rem 1rem;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   transition: background-color 0.3s ease;
 }
 
@@ -193,4 +193,31 @@ main {
   margin: 2rem;
   font-weight: 400;
   font-size: 1.4rem;
+}
+
+.sorting {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 5;
+  margin-bottom: -15;
+}
+
+.sort_button{
+  background-color: #7c3f65;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sort_button:hover {
+  background-color: #3c1d31;
+}
+
+.sort_button--active {
+  background-color: #4f2641;
 }
