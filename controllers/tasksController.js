@@ -15,7 +15,7 @@ exports.getAddTaskView = (req, res) => {
 exports.addNewTask  = (req, res) => {
     const { name, description, deadline } = req.body;
 
-    if(!name || !description || !deadline){
+    if(!name || !deadline){
       return res.render("add-task.ejs", {
         headTitle: "Add Task",
         path: "/add",

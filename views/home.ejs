@@ -29,19 +29,19 @@
       <% if (tasks?.length > 0) { %>
       <ul>
         <% tasks.forEach(task => { %>
-            <li class="task_list <%= task.done ? 'task_done' : '' %><%= task.isLate ? 'task_late' : '' %>">
-              <div class="task_header">
-                <h3 class="task_title"><%= task.name %></h3>
-                <p class="task_description"> - <%= task.description %></p>
-                <p class="task_deadline">Deadline: <%= task.deadline %></p>
+            <li class="task__list <%= task.done ? 'task__done' : '' %><%= task.isLate ? 'task__late' : '' %>">
+              <div class="task__header">
+                <h3 class="task__title"><%= task.name %></h3>
+                <p class="task__description"> <%= task.description %></p>
+                <p class="task__deadline">Deadline: <%= task.deadline %></p>
               </div>
-              <div class="task_buttons">
+              <div class="task__buttons">
                 <form action="/done" method="POST">
                   <input type="hidden" name="name" value="<%= task.name %>">
-                  <button class="done_button" type="submit" <%= task.done ? "disabled" : "" %>>Done</button>
+                  <button class="button" type="submit" <%= task.done ? "disabled" : "" %>>Done</button>
                 </form>
                 <form>
-                  <button class="done_button" type="button" onclick="deleteTask('<%= task.id %>')">Delete</button>
+                  <button class="button" type="button" onclick="deleteTask('<%= task.id %>')">Delete</button>
               </form>
               </div>
             </li>
@@ -49,7 +49,7 @@
       </ul>
       <% } else { %>
       <br />
-      <div class="no_tasks">No tasks yet.</div>
+      <div class="no__tasks">No tasks yet.</div>
       <% }%>
     </main>
     
