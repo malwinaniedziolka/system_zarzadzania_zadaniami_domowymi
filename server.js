@@ -1,11 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-//const dayjs = require('dayjs');
 
 const getFileFromAbsolutePath = require("./utils/getFileFromAbsolutePath");
 const { PORT } = require("./config");
 const logger = require("./utils/logger");
-const homeRoutes = require("./routing/home");
 const { STATUS_CODE } = require("./constants/statusCode");
 const tasksRoutes = require("./routing/tasks");
 const { MENU_LINKS } = require("./constants/navigation");
@@ -16,8 +14,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(express.static(getFileFromAbsolutePath("public")));
-app.use(bodyParser.json()); //nwm czy to potrzebuje
-app.use(bodyParser.urlencoded({ extended: false })); //parsowanie danych z formularzy
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((request, _response, next) => {
   const { url, method } = request;
@@ -26,10 +23,7 @@ app.use((request, _response, next) => {
   next();
 });
 
-//app.use dalsze
-
-app.use("/", tasksRoutes);
-app.use(homeRoutes);
+app.use(tasksRoutes);
 app.use((request, response) => {
   const { url } = request;
 

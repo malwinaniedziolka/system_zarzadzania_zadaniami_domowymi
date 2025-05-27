@@ -28,6 +28,9 @@
         </div>
         <button class="add_task_button" type="submit">Add Task</button>
       </form>
+      <% if (typeof errorMessage !== "undefined") { %>
+        <script>alert("<%= errorMessage %>");</script>
+      <% } %>
     </main>
   </body>
 </html>

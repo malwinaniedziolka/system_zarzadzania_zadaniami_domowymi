@@ -1,7 +1,6 @@
 const Tasks = require("../models/TasksModel");
 
 const { MENU_LINKS } = require("../constants/navigation");
-const { STATUS_CODE } = require("../constants/statusCode");
 
 exports.getTasksView = (req, res) => {
   const tasks = Tasks.getAll();

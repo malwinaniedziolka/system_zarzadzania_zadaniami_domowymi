@@ -14,6 +14,16 @@ exports.getAddTaskView = (req, res) => {
 
 exports.addNewTask  = (req, res) => {
     const { name, description, deadline } = req.body;
+
+    if(!name || !description || !deadline){
+      return res.render("add-task.ejs", {
+        headTitle: "Add Task",
+        path: "/add",
+        menuLinks: MENU_LINKS,
+        activeLinkPath: "/add",
+        errorMessage: "Please fill out every ??? in the form",
+      });
+    }
     const newTask = new Tasks(name, description, deadline);
     Tasks.add(newTask);
     res.redirect('/');

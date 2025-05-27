@@ -2,11 +2,11 @@ const { randomUUID } = require('crypto'); //do automatycznich id zadan
 
 class Tasks {
   constructor(name, description, deadline) {
-    this.id = randomUUID(); //daje randomowe id
+    this.id = randomUUID();
     this.name = name;
     this.description = description;
     this.deadline = deadline;
-    this.done = false; //potem zmienic jesli bede uzywac z bd
+    this.done = false;
   }
 
   static #tasks = [
