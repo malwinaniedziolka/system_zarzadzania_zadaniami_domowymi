@@ -1,4 +1,4 @@
-const { randomUUID } = require('crypto'); //do automatycznich id zadan
+const { randomUUID } = require('crypto');
 
 class Tasks {
   constructor(name, description, deadline) {
