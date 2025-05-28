@@ -2,6 +2,39 @@
   <head>
     <title><%= headTitle %></title>
     <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="heading">Past Due Tasks</h1>
+      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
+      activeLinkPath}); %>
+      <%- include('partials/sorting', { path: path }); %>
+      <% if (tasks?.length > 0) { %>
+      <ul>
+        <% tasks.forEach(task => { %>
+            <li class="task__list <%= task.done ? 'task__done' : '' %><%= task.isLate ? 'task__late' : '' %>">
+              <div class="task__header">
+                <h3 class="task__title"><%= task.name %></h3>
+                <p class="task__description"> <%= task.description %></p>
+                <p class="task__deadline">Deadline: <%= task.deadline %></p>
+              </div>
+              <div class="task__buttons">
+                <form action="/done/<%= task.id %>" method="POST">
+                  <input type="hidden" name="name" value="<%= task.name %>">
+                  <button class="button" type="submit" <%= task.done ? "disabled" : "" %>>Done</button>
+                </form>
+                <form>
+                  <button class="button" type="button" onclick="deleteTask('<%= task.id %>')">Delete</button>
+              </form>
+              </div>
+            </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <br />
+      <div class="no__tasks">No past due tasks.</div>
+      <% }%>
+    </main>
     <script>
       function deleteTask(id) {
         if (!confirm(`Are you sure you want to delete this task?`)) {
@@ -19,38 +52,5 @@
         });
       }
     </script>
-  </head>
-  <body>
-    <main>
-      <h1 class="heading">Past Due Tasks</h1>
-      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
-      activeLinkPath}); %>
-      <%- include('partials/sorting', { path: path }); %>
-      <% if (tasks?.length > 0) { %>
-      <ul>
-        <% tasks.forEach(task => { %>
-            <li class="task__list <%= task.done ? 'task__done' : '' %><%= task.isLate ? 'task__late' : '' %>">
-              <div class="task__header">
-                <h3 class="task__title"><%= task.name %></h3>
-                <p class="task__description"> - <%= task.description %></p>
-                <p class="task__deadline">Deadline: <%= task.deadline %></p>
-              </div>
-              <div class="task__buttons">
-                <form action="/done" method="POST">
-                  <input type="hidden" name="name" value="<%= task.name %>">
-                  <button class="button" type="submit" <%= task.done ? "disabled" : "" %>>Done</button>
-                </form>
-                <form>
-                  <button class="button" type="button" onclick="deleteTask('<%= task.id %>')">Delete</button>
-              </form>
-              </div>
-            </li>
-        <% }) %>
-      </ul>
-      <% } else { %>
-      <br />
-      <div class="no__tasks">No Past Due tasks.</div>
-      <% }%>
-    </main>
   </body>
 </html>

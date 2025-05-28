@@ -21,7 +21,7 @@ exports.addNewTask  = (req, res) => {
         path: "/add",
         menuLinks: MENU_LINKS,
         activeLinkPath: "/add",
-        errorMessage: "Please fill out every ??? in the form",
+        errorMessage: "Please fill out name and deadline.",
       });
     }
     const newTask = new Tasks(name, description, deadline);
@@ -30,9 +30,9 @@ exports.addNewTask  = (req, res) => {
 }
 
 exports.markTaskAsDone = (req, res) => {
-  const { name } = req.body;
-  Tasks.markAsDone(name);
-  res.redirect("/");
+  const { id } = req.params;
+  Tasks.markAsDone(id);
+  res.redirect('/');
 }
 
 exports.getUpcomingTasksView = (req, res) => {
@@ -65,7 +65,7 @@ exports.getPastDueTasksView = (req, res) => {
   }
 
   res.render("past-due-tasks.ejs", {
-    headTitle: "Upcoming Tasks",
+    headTitle: "Past Due Tasks",
     path: "/pastdue",
     activeLinkPath: "/pastdue",
     menuLinks: MENU_LINKS,

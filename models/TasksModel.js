@@ -10,9 +10,7 @@ class Tasks {
   }
 
   static #tasks = [
-    { id: '1', name: "Matma", description: "opisss", deadline: "2026-03-21", done: false },
-    { id: '2', name: "Angielski", description: "opis zadania", deadline: "2025-09-21", done: false },
-    { id: '3', name: "Geografia", description: "zadanie 15", deadline: "2024-09-21", done: false },
+    //mozna tutaj dodac przykladowe zadania jesli sie chce
   ];
 
   static getAll() {
@@ -23,8 +21,8 @@ class Tasks {
     this.#tasks.push(task);
   }
 
-  static markAsDone(name) {
-    const task = this.#tasks.find((task) => task.name === name);
+  static markAsDone(id) {
+    const task = this.#tasks.find((task) => task.id == id);
     if (task) task.done = true;
   }
 

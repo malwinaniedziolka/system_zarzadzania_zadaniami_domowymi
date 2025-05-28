@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", homeController.getTasksView);
 router.get("/add", tasksController.getAddTaskView);
 router.post("/add", tasksController.addNewTask);
-router.post("/done", tasksController.markTaskAsDone);
+router.post("/done/:id", tasksController.markTaskAsDone);
 router.get("/upcoming", tasksController.getUpcomingTasksView);
 router.get("/pastdue", tasksController.getPastDueTasksView);
 router.get("/completed", tasksController.getCompletedTasksView);

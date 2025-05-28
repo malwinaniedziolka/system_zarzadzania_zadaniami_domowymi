@@ -2,23 +2,6 @@
   <head>
     <title><%= headTitle %></title>
     <link rel="stylesheet" href="/css/main.css" />
-    <script>
-      function deleteTask(id) {
-        if (!confirm(`Are you sure you want to delete this task?`)) {
-          return;
-        }
-
-      fetch(`/delete/${id}`, {
-        method: "DELETE"
-        }).then((res) => {
-          if (res.ok) {
-            window.location.reload();
-          } else {
-          alert("Error while deleting.");
-          }
-        });
-      }
-    </script>
   </head>
   <body>
     <main>
@@ -36,7 +19,7 @@
                 <p class="task__deadline">Deadline: <%= task.deadline %></p>
               </div>
               <div class="task__buttons">
-                <form action="/done" method="POST">
+                <form action="/done/<%= task.id %>" method="POST">
                   <input type="hidden" name="name" value="<%= task.name %>">
                   <button class="button" type="submit" <%= task.done ? "disabled" : "" %>>Done</button>
                 </form>
@@ -52,6 +35,22 @@
       <div class="no__tasks">No tasks yet.</div>
       <% }%>
     </main>
-    
+    <script>
+      function deleteTask(id) {
+        if (!confirm(`Are you sure you want to delete this task?`)) {
+          return;
+        }
+
+      fetch(`/delete/${id}`, {
+        method: "DELETE"
+        }).then((res) => {
+          if (res.ok) {
+            window.location.reload();
+          } else {
+          alert("Error while deleting.");
+          }
+        });
+      }
+    </script>
   </body>
 </html>

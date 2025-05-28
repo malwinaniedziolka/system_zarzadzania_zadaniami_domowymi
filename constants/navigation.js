@@ -8,7 +8,7 @@ const MENU_LINKS = [
   { label: "Add Task", path: "/add" },
   { label: "Upcoming Tasks", path: "/upcoming" },
   { label: "Completed Tasks", path: "/completed" },
-  { label: "Past due Tasks", path: "/pastdue" },
+  { label: "Past Due Tasks", path: "/pastdue" },
 ];
 
 module.exports = {
